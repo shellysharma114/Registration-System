@@ -1,8 +1,9 @@
 import mysql.connector          #pip install mysql-connector-python
+import createConn
+
 def create_registration(name, email, dob, phone=None, address=None):
     try:
-        conn = mysql.connector.connect(host='localhost',username='root',password='',database='test')
-        my_cursor = conn.cursor()
+        conn , my_cursor = createConn.create_connection()
         query = """INSERT INTO Registration (Name, Email, DateOfBirth, PhoneNumber, Address)
                     VALUES (%s, %s, %s, %s, %s)"""
         values = (name, email, dob, phone, address)
@@ -17,4 +18,4 @@ def create_registration(name, email, dob, phone=None, address=None):
             conn.close()
 
 if __name__ == "__main__" :
-    create_registration("John", "johndoe11@example.com", "1995-05-15", "9876543210", "123 Street, City")
+    create_registration("Shelly", "shelly@example.com", "1995-05-15", "9876543210", "123 Street, Agra")

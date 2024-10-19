@@ -1,19 +1,22 @@
 import mysql.connector          #pip install mysql-connector-python
-import fetchReg
+import fetchReg, createConn
 
-def update_registration(id, name, email=None, phone=None, address=None):
+def update_registration(id, name=None, email=None, phone=None, address=None):
     try:
-        conn = mysql.connector.connect(host='localhost',username='root',password='',database='test')
-        my_cursor = conn.cursor(dictionary=True)
+        conn , my_cursor = createConn.create_connection()
+        
         existing_data = fetchReg.fetch_registration_by_id(id)
         if not existing_data:
             return "No registration found with this ID."
         
+        # Unpack existing data tuple into variables (adjust the order as per your database)
+        existing_id, existing_name, existing_email, existing_dob, existing_phone, existing_address, registration_date = existing_data
+        
         # Use existing data if no new value is provided
-        name = name if name else existing_data['Name']
-        email = email if email else existing_data['Email']
-        phone = phone if phone else existing_data['PhoneNumber']
-        address = address if address else existing_data['Address']
+        name = name if name else existing_name
+        email = email if email else existing_email
+        phone = phone if phone else existing_phone
+        address = address if address else existing_address
         
         query = """UPDATE Registration SET Name = %s, Email = %s, PhoneNumber = %s, Address = %s
                    WHERE ID = %s"""

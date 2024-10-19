@@ -1,10 +1,9 @@
 import mysql.connector          #pip install mysql-connector-python
-import fetchReg
+import fetchReg, createConn
 
 def delete_registration(id):
     try:
-        conn = mysql.connector.connect(host='localhost',username='root',password='',database='test')
-        my_cursor = conn.cursor(dictionary=True)
+        conn , my_cursor = createConn.create_connection()
         existing_data = fetchReg.fetch_registration_by_id(id)
         if not existing_data:
             return "No registration found with this ID."

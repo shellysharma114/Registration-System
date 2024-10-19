@@ -1,7 +1,7 @@
 import mysql.connector          #pip install mysql-connector-python 
+import createConn
 try:
-    conn = mysql.connector.connect(host='localhost',username='root',password='',database='test')
-    my_cursor = conn.cursor()
+    conn , my_cursor = createConn.create_connection()
     query = """CREATE TABLE Registration (
                 ID INT AUTO_INCREMENT PRIMARY KEY,         -- Primary Key for the table, auto-increments
                 Name VARCHAR(255) NOT NULL,                -- User's name, cannot be null
