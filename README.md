@@ -26,33 +26,4 @@ Ensure you have the following installed on your machine:
 * Python 3.x
 * MySQL Server
 
-##Setup Steps
-Follow these steps to set up the project on your local machine:
 
-<p>1. Clone the repository</p>
-```plaintext
-git clone repo_url
-```
-<p>2. Install the required Python dependencies:</p>
-```plaintext
-pip install streamlit mysql-connector-python pandas
-```
-<p>3. Navigate to the backend directory:</p>
-```plaintext
-cd backend
-```
-<p>4. Set up a connection with your MySQL database. Make sure MySQL is installed and running on your local machine.</p>
-<p>5. Update the MySQL connection details in registration-system/backend/createConn.py. You need to provide your MySQL username, password, host, and database name:</p>
-```plaintext
-# Example content for createConn.py
-import mysql.connector
-
-def get_connection():
-    return mysql.connector.connect(
-        host="localhost",      # Update with your host
-        user="your_username",  # Update with your MySQL username
-        password="your_password",  # Update with your MySQL password
-        database="your_database"   # Update with your MySQL database name
-    )
-
-```
