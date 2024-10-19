@@ -32,7 +32,7 @@ Follow these steps to set up the project on your local machine:
 #### Step1: Clone the repository to your local machine:
 
 ```
-git clone "this repo"
+git clone https://github.com/shellysharma114/Registration-System.git
 ```
 #### Step2: Install the required Python dependencies:
 
